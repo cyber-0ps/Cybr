@@ -1,0 +1,30 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+
+# Local .terraform directories
+.terraform/
+.terraform.lock.hcl
+
+# Backup files
+*.bak
+*.tmp
+*.swp
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Terraform plan files
+*.tfplan
+
+# Ignore any other sensitive files
+*.pem
+*.key
