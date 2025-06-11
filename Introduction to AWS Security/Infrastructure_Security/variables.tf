@@ -18,3 +18,10 @@ variable "public_subnet_cidr" {
   type = list(string)
   default = ["10.0.1.0/24", "10.0.2.0/24"]
 }
+
+# Private subnet CIDRs (2 subnets in 2 different AZs)
+variable "private_subnet_cidrs" {
+  description = "CIDR blocks for private subnets"
+  type = list(string)
+  default = ["10.0.101.0/24", "10.0.102.0/24"]
+}
