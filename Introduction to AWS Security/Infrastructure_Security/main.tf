@@ -64,3 +64,12 @@ resource "aws_subnet" "private" {
   }
 }
 
+# route tables for private subnet for S3 endpoint
+resource "aws_route_table" "private" {
+  count = 2
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "cybr-private-rt-${count.index + 1}"
+  }
+}
