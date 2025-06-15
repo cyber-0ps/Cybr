@@ -81,3 +81,16 @@ resource "aws_route_table_association" "private" {
   route_table_id = aws_route.private[count.index]
 }
 
+# S3 Gateway Endpoint
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id = aws_vpc.main.id
+  service_name = "com.amazon.aws.${var.aws_region}.s3"
+  vpc_endpoint_type = "Gateway"
+
+  # attach endpoint to private route tables
+  route_table_ids = [for rt in aws_rouaws_route_table.private : rt.id]
+
+  tags = {
+    Name = "cybr-s3-endpoint"
+  }
+}
