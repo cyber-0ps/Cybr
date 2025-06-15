@@ -73,3 +73,11 @@ resource "aws_route_table" "private" {
     Name = "cybr-private-rt-${count.index + 1}"
   }
 }
+
+# associate private subnets with their route tables
+resource "aws_route_table_association" "private" {
+  count = 2
+  subnet_id = aws_subnet.private[count.index].id
+  route_table_id = aws_route.private[count.index]
+}
+
