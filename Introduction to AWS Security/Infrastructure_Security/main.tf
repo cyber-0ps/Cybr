@@ -54,9 +54,9 @@ resource "aws_route_table_association" "public" {
 
 # private subnets
 resource "aws_subnet" "private" {
-  count = 2
-  vpc_id = aws_vpc.main.id
-  cidr_block = var.vpc_cidr[count.index]
+  count             = 2
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.vpc_cidr[count.index]
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
@@ -66,7 +66,7 @@ resource "aws_subnet" "private" {
 
 # route tables for private subnet for S3 endpoint
 resource "aws_route_table" "private" {
-  count = 2
+  count  = 2
   vpc_id = aws_vpc.main.id
 
   tags = {
@@ -76,15 +76,15 @@ resource "aws_route_table" "private" {
 
 # associate private subnets with their route tables
 resource "aws_route_table_association" "private" {
-  count = 2
-  subnet_id = aws_subnet.private[count.index].id
+  count          = 2
+  subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route.private[count.index]
 }
 
 # S3 Gateway Endpoint
 resource "aws_vpc_endpoint" "s3" {
-  vpc_id = aws_vpc.main.id
-  service_name = "com.amazon.aws.${var.aws_region}.s3"
+  vpc_id            = aws_vpc.main.id
+  service_name      = "com.amazon.aws.${var.aws_region}.s3"
   vpc_endpoint_type = "Gateway"
 
   # attach endpoint to private route tables
