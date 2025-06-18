@@ -11,7 +11,7 @@ resource "aws_vpc" "main" {
 
 # create an Internet Gateway
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.main
+  vpc_id = aws_vpc.main.id
 
   tags = {
     Name = "cybr-igw"
@@ -21,7 +21,7 @@ resource "aws_internet_gateway" "gw" {
 # public subnets
 resource "aws_subnet" "public" {
   count                   = 2
-  vpc_id                  = aws_vpc.main
+  vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_cidrs[count.index]
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   map_public_ip_on_launch = true
