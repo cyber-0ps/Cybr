@@ -56,7 +56,7 @@ resource "aws_route_table_association" "public" {
 resource "aws_subnet" "private" {
   count             = 2
   vpc_id            = aws_vpc.main.id
-  cidr_block        = var.vpc_cidr[count.index]
+  cidr_block        = var.private_subnet_cidrs[count.index]
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
@@ -78,17 +78,17 @@ resource "aws_route_table" "private" {
 resource "aws_route_table_association" "private" {
   count          = 2
   subnet_id      = aws_subnet.private[count.index].id
-  route_table_id = aws_route.private[count.index]
+  route_table_id = aws_route_table.private[count.index].id
 }
 
 # S3 Gateway Endpoint
 resource "aws_vpc_endpoint" "s3" {
   vpc_id            = aws_vpc.main.id
-  service_name      = "com.amazon.aws.${var.aws_region}.s3"
+  service_name      = "com.amazonaws.${var.aws_region}.s3"
   vpc_endpoint_type = "Gateway"
 
   # attach endpoint to private route tables
-  route_table_ids = [for rt in aws_rouaws_route_table.private : rt.id]
+  route_table_ids = [for rt in aws_route_table.private : rt.id]
 
   tags = {
     Name = "cybr-s3-endpoint"
