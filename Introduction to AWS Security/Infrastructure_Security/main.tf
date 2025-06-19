@@ -9,6 +9,10 @@ resource "aws_vpc" "main" {
   }
 }
 
+# Get list of available availability zones in the selected region
+data "aws_availability_zones" "available" {}
+
+
 # create an Internet Gateway
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
