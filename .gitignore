@@ -28,3 +28,64 @@ Thumbs.db
 # Ignore any other sensitive files
 *.pem
 *.key
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+pip-wheel-metadata/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyInstaller
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Pylint
+.pylint.d/
+
+# Pyre
+.pyre/
+
+# pytype
+.pytype/
+
+# Environments
+.env
+.env.*
+*.env
+
+# Secrets
+*.secrets
+*.token
