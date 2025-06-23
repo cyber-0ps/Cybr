@@ -1,6 +1,6 @@
 # AWS region to deploy infrastructure
 variable "aws_region" {
   description = "The AWS region to deploy resources into"
-  type = string
-  default = "us-east-1"
+  type        = string
+  default     = "us-east-1"
 }
