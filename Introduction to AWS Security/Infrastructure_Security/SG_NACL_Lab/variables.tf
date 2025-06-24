@@ -20,3 +20,7 @@ variable "it_admin_ips" {
 variable "web_sg_name" {
   default = "web-server"
 }
+
+variable "app_sg_name" {
+  default = "app-servers"
+}
