@@ -24,3 +24,7 @@ variable "web_sg_name" {
 variable "app_sg_name" {
   default = "app-servers"
 }
+
+variable "it_sg_name" {
+  default = "it-administrator"
+}
