@@ -10,3 +10,9 @@ variable "vpc_cidr" {
   type        = string
   default     = "10.0.0.0/16"
 }
+
+variable "it_admin_ips" {
+    description = "List of CIDR blocks for IT admin access"
+    type = list(string)
+    default = [ "172.16.0.0/16", "192.168.0.0/16" ]
+}
