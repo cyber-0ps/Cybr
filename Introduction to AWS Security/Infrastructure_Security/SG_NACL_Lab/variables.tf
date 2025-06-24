@@ -16,3 +16,7 @@ variable "it_admin_ips" {
     type = list(string)
     default = [ "172.16.0.0/16", "192.168.0.0/16" ]
 }
+
+variable "web_sg_name" {
+  default = "web-server"
+}
