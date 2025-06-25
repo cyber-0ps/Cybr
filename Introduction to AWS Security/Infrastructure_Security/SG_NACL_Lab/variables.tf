@@ -28,3 +28,7 @@ variable "app_sg_name" {
 variable "it_sg_name" {
   default = "it-administrator"
 }
+
+variable "db_sg_name" {
+  default = "database"
+}
