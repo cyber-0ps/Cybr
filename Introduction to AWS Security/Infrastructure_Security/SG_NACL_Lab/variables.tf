@@ -32,3 +32,7 @@ variable "it_sg_name" {
 variable "db_sg_name" {
   default = "database"
 }
+
+variable "public_nacl_name" {
+  default = "public-subnets"
+}
