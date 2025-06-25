@@ -36,3 +36,7 @@ variable "db_sg_name" {
 variable "public_nacl_name" {
   default = "public-subnets"
 }
+
+variable "private_nacl_name" {
+  default = "private-subnets"
+}
