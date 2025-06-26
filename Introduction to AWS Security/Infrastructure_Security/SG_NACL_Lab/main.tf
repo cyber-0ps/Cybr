@@ -8,3 +8,10 @@ resource "aws_vpc" "main" {
     Name = "cybr-lab"
   }
 }
+
+# Security Groups: Web Servers
+resource "aws_security_group" "web_servers" {
+  name = var.web_sg_name
+  description = "Allow HTT and HTTP from anywhere"
+  vpc_id = aws_vpc.main
+}
