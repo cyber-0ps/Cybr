@@ -14,4 +14,12 @@ resource "aws_security_group" "web_servers" {
   name = var.web_sg_name
   description = "Allow HTT and HTTP from anywhere"
   vpc_id = aws_vpc.main
+
+  # allow port 80 ingress
+  ingress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
