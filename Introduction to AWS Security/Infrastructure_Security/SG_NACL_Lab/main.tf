@@ -29,4 +29,12 @@ resource "aws_security_group" "web_servers" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  # redundant but useful for update later (since it allows all outbound protocols - however you may want to restrict this)
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
