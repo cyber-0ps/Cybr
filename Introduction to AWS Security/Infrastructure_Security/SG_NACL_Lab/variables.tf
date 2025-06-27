@@ -18,6 +18,7 @@ variable "it_admin_ips" {
 }
 
 variable "web_sg_name" {
+  type        = string
   default = "web-server"
 }
 
