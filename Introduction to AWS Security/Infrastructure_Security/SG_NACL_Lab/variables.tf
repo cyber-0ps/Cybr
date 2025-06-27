@@ -28,6 +28,7 @@ variable "app_sg_name" {
 }
 
 variable "it_sg_name" {
+  type        = string
   default = "it-administrator"
 }
 
