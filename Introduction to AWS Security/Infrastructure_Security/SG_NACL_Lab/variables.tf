@@ -23,6 +23,7 @@ variable "web_sg_name" {
 }
 
 variable "app_sg_name" {
+  type        = string
   default = "app-servers"
 }
 
