@@ -43,5 +43,6 @@ variable "public_nacl_name" {
 }
 
 variable "private_nacl_name" {
+  type    = string
   default = "private-subnets"
 }
