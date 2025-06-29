@@ -33,7 +33,7 @@ variable "it_sg_name" {
 }
 
 variable "db_sg_name" {
-
+  type    = string
   default = "database"
 }
 
