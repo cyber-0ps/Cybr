@@ -38,6 +38,7 @@ variable "db_sg_name" {
 }
 
 variable "public_nacl_name" {
+  type    = string
   default = "public-subnets"
 }
 
