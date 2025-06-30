@@ -42,3 +42,10 @@ resource "aws_security_group" "web_servers" {
     Name = var.web_sg_name
   }
 }
+
+# Security Group: App Servers
+resource "aws_security_group" "app_servers" {
+  name = var.app_sg_name
+  description = "Allow traffic from web servers"
+  vpc_id = aws_vpc.main.id
+}
