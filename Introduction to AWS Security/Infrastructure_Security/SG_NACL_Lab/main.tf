@@ -48,4 +48,11 @@ resource "aws_security_group" "app_servers" {
   name = var.app_sg_name
   description = "Allow traffic from web servers"
   vpc_id = aws_vpc.main.id
+  
+  ingress {
+    from_port = 0
+    to_port = 65535
+    protocol = "tcp"
+    security_groups = [aws_security_group.web_servers.id]
+  }
 }
