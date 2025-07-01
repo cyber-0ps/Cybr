@@ -63,3 +63,10 @@ resource "aws_security_group" "app_servers" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+# Security Group: IT Administration
+resource "aws_security_group" "it_admin" {
+  name = var.it_sg_name
+  description = "Allow SSH and RDP from IT admin IPs"
+  vpc_id = aws_vpc.main.id
+}
