@@ -84,3 +84,10 @@ resource "aws_security_group" "it_admin" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+# Security Group: Database
+resource "aws_security_group" "database" {
+  name = var.db_sg_name
+  description = "Allow MySQL access from app servers"
+  vpc_id = aws_vpc.main.id
+}
