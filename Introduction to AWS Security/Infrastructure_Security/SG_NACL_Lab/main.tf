@@ -105,3 +105,12 @@ resource "aws_security_group" "database" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+# NACL: Public
+resource "aws_network_acl" "public" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = var.public_nacl_name
+  }
+}
