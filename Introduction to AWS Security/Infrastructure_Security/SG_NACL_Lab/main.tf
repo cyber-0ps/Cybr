@@ -90,4 +90,11 @@ resource "aws_security_group" "database" {
   name = var.db_sg_name
   description = "Allow MySQL access from app servers"
   vpc_id = aws_vpc.main.id
+
+  ingress {
+    from_port = 3306
+    to_port = 3306
+    protocol = "tcp"
+    security_groups = [aws_security_group.app_servers]
+  }
 }
