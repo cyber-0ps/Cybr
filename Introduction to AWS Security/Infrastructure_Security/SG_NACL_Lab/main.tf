@@ -115,6 +115,7 @@ resource "aws_network_acl" "public" {
   }
 }
 
+# NACL: Public Ingress Rules
 resource "aws_network_acl_rule" "public_ingress" {
   network_acl_id = aws_network_acl.public.id
   rule_number    = 100
@@ -126,6 +127,7 @@ resource "aws_network_acl_rule" "public_ingress" {
   to_port        = 0
 }
 
+# NACL: Public Egress Rules
 resource "aws_network_acl_rule" "public_egress" {
   network_acl_id = aws_network_acl.public.id
   rule_number    = 100
