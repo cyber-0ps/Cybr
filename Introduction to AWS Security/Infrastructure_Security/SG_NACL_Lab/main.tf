@@ -138,3 +138,13 @@ resource "aws_network_acl_rule" "public_egress" {
   from_port      = 0
   to_port        = 0
 }
+
+# NACL: Private
+resource "aws_network_acl" "private" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = var.private_nacl_name
+  }
+}
+
