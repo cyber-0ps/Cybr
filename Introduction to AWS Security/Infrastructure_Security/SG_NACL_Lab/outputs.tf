@@ -17,3 +17,7 @@ output "it_admin_sg_id" {
 output "database_sg_id" {
   value = aws_security_group.database.id
 }
+
+output "public_nacl_id" {
+  value = aws_network_acl.public.id
+}
