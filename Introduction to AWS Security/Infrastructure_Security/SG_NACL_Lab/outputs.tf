@@ -14,3 +14,6 @@ output "it_admin_sg_id" {
   value = aws_security_group.it_admin
 }
 
+output "database_sg_id" {
+  value = aws_security_group.database.id
+}
