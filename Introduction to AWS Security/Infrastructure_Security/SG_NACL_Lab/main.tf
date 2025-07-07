@@ -23,6 +23,14 @@ resource "aws_security_group" "web_servers" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Allow HTTP (port 80) - IPv6
+  ingress {
+    from_port         = 80
+    to_port           = 80
+    protocol          = "tcp"
+    ipv6_cidr_blocks  = ["::/0"]
+  }
+
   # allow port 443 ingress - IPv4
   ingress = {
     from_port   = 443
@@ -31,10 +39,10 @@ resource "aws_security_group" "web_servers" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Allow HTTP (port 80) - IPv6
+  # Allow HTTPS (port 443) - IPv6
   ingress {
-    from_port         = 80
-    to_port           = 80
+    from_port         = 443
+    to_port           = 443
     protocol          = "tcp"
     ipv6_cidr_blocks  = ["::/0"]
   }
