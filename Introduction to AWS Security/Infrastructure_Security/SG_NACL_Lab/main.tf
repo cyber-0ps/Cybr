@@ -31,6 +31,14 @@ resource "aws_security_group" "web_servers" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Allow HTTP (port 80) - IPv6
+  ingress {
+    from_port         = 80
+    to_port           = 80
+    protocol          = "tcp"
+    ipv6_cidr_blocks  = ["::/0"]
+  }
+
   # redundant but useful for update later (since it allows all outbound protocols - however you may want to restrict this later)
   egress {
     from_port   = 0
