@@ -15,7 +15,7 @@ resource "aws_security_group" "web_servers" {
   description = "Allow HTTP and HTTPs from anywhere (IPv4 and IPv6)"
   vpc_id      = aws_vpc.main
 
-  # allow port 80 ingress
+  # allow port 80 ingress - IPv4
   ingress {
     from_port   = 80
     to_port     = 80
@@ -23,6 +23,7 @@ resource "aws_security_group" "web_servers" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # allow port 443 ingress - IPv4
   ingress = {
     from_port   = 443
     to_port     = 443
