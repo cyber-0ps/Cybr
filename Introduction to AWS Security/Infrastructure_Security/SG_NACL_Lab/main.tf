@@ -12,7 +12,7 @@ resource "aws_vpc" "main" {
 # Security Groups: Web Servers
 resource "aws_security_group" "web_servers" {
   name        = var.web_sg_name
-  description = "Allow HTT and HTTP from anywhere"
+  description = "Allow HTTP and HTTPs from anywhere (IPv4 and IPv6)"
   vpc_id      = aws_vpc.main
 
   # allow port 80 ingress
