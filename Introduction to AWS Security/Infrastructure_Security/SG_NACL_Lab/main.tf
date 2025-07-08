@@ -95,6 +95,13 @@ resource "aws_security_group" "it_admin" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = var.it_admin_ips
+  }
+  
+  ingress {
     from_port   = 3389
     to_port     = 3389
     protocol    = "tcp"
