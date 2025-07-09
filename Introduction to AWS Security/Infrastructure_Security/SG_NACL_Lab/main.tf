@@ -177,7 +177,7 @@ resource "aws_network_acl_rule" "public_ingress" {
 # NACL: Public Egress Rules - IPv4
 resource "aws_network_acl_rule" "public_egress" {
   network_acl_id = aws_network_acl.public.id
-  rule_number    = 100
+  rule_number    = 120
   egress         = true
   protocol       = "-1"
   rule_action    = "allow"
