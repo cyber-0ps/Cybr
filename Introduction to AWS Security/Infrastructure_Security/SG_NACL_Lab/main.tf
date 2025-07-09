@@ -32,7 +32,7 @@ resource "aws_security_group" "web_servers" {
   }
 
   # allow port 443 ingress - IPv4
-  ingress = {
+  ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
