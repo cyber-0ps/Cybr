@@ -150,7 +150,7 @@ resource "aws_network_acl" "public" {
   }
 }
 
-# NACL: Public Ingress Rules
+# NACL: Public Ingress Rules - IPv4
 resource "aws_network_acl_rule" "public_ingress" {
   network_acl_id = aws_network_acl.public.id
   rule_number    = 100
@@ -158,6 +158,18 @@ resource "aws_network_acl_rule" "public_ingress" {
   protocol       = "-1"
   rule_action    = "allow"
   cidr_block     = "0.0.0.0/0"
+  from_port      = 0
+  to_port        = 0
+}
+
+# NACL: Public Ingress Rules - IPv6
+resource "aws_network_acl_rule" "public_ingress" {
+  network_acl_id = aws_network_acl.public.id
+  rule_number    = 110
+  egress         = false
+  protocol       = "-1"
+  rule_action    = "allow"
+  cidr_block     = "::/0"
   from_port      = 0
   to_port        = 0
 }
