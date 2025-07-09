@@ -186,6 +186,18 @@ resource "aws_network_acl_rule" "public_egress" {
   to_port        = 0
 }
 
+# NACL: Public Egress Rules - IPv4
+resource "aws_network_acl_rule" "public_egress_ipv6" {
+  network_acl_id = aws_network_acl.public.id
+  rule_number    = 130
+  egress         = true
+  protocol       = "-1"
+  rule_action    = "allow"
+  ipv6_cidr_block = "::/0"
+  from_port      = 0
+  to_port        = 0
+}
+
 # NACL: Private
 resource "aws_network_acl" "private" {
   vpc_id = aws_vpc.main.id
