@@ -11,7 +11,7 @@ output "app_sg_id" {
 }
 
 output "it_admin_sg_id" {
-  value = aws_security_group.it_admin
+  value = aws_security_group.it_admin.id
 }
 
 output "database_sg_id" {
