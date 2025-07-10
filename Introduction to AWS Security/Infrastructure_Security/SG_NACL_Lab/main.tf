@@ -86,6 +86,10 @@ resource "aws_security_group" "app_servers" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name = var.app_sg_name
+  }
 }
 
 # Security Group: IT Administration
