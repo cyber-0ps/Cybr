@@ -215,6 +215,7 @@ resource "aws_network_acl" "private" {
   }
 }
 
+# NACL: Private Egress Rules - IPv4
 resource "aws_network_acl_rule" "private_ingress" {
   network_acl_id = aws_network_acl.private.id
   rule_number    = 100
