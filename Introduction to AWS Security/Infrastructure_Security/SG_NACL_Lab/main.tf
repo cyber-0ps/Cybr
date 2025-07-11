@@ -171,7 +171,7 @@ resource "aws_network_acl_rule" "public_ingress" {
 }
 
 # NACL: Public Ingress Rules - IPv6
-resource "aws_network_acl_rule" "public_ingress" {
+resource "aws_network_acl_rule" "public_ingress_ipv6" {
   network_acl_id = aws_network_acl.public.id
   rule_number    = 110
   egress         = false
