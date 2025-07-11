@@ -227,6 +227,7 @@ resource "aws_network_acl_rule" "private_ingress" {
   to_port        = 0
 }
 
+# NACL: Public Egress Rules - IPv6
 resource "aws_network_acl_rule" "private_egress_ipv6" {
   network_acl_id = aws_network_acl.private.id
   rule_number    = 100
