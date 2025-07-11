@@ -25,10 +25,10 @@ resource "aws_security_group" "web_servers" {
 
   # Allow HTTP (port 80) - IPv6
   ingress {
-    from_port         = 80
-    to_port           = 80
-    protocol          = "tcp"
-    ipv6_cidr_blocks  = ["::/0"]
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    ipv6_cidr_blocks = ["::/0"]
   }
 
   # allow port 443 ingress - IPv4
@@ -41,10 +41,10 @@ resource "aws_security_group" "web_servers" {
 
   # Allow HTTPS (port 443) - IPv6
   ingress {
-    from_port         = 443
-    to_port           = 443
-    protocol          = "tcp"
-    ipv6_cidr_blocks  = ["::/0"]
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    ipv6_cidr_blocks = ["::/0"]
   }
 
   # redundant but useful for update later (since it allows all outbound protocols - however you may want to restrict this later)
@@ -104,7 +104,7 @@ resource "aws_security_group" "it_admin" {
     protocol    = "tcp"
     cidr_blocks = var.it_admin_ips
   }
-  
+
   ingress {
     from_port   = 3389
     to_port     = 3389
@@ -196,14 +196,14 @@ resource "aws_network_acl_rule" "public_egress" {
 
 # NACL: Public Egress Rules - IPv6
 resource "aws_network_acl_rule" "public_egress_ipv6" {
-  network_acl_id = aws_network_acl.public.id
-  rule_number    = 130
-  egress         = true
-  protocol       = "-1"
-  rule_action    = "allow"
+  network_acl_id  = aws_network_acl.public.id
+  rule_number     = 130
+  egress          = true
+  protocol        = "-1"
+  rule_action     = "allow"
   ipv6_cidr_block = "::/0"
-  from_port      = 0
-  to_port        = 0
+  from_port       = 0
+  to_port         = 0
 }
 
 # NACL: Private
