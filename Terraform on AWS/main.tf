@@ -14,6 +14,13 @@ provider "aws" {
   profile = "cybr"
 }
 
+provider "aws" {
+  # Configuration options
+  region = "eu-west-1"
+  alias = "ew1"
+  profile = "cybr"
+}
+
 resource "aws_s3_bucket" "example" {
   bucket = "kuljot-biring-test-bucket"
 
