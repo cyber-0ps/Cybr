@@ -10,6 +10,7 @@ terraform {
 provider "aws" {
   # Configuration options
   region = "us-east-1"
+  alias = "ue1"
   profile = "cybr"
 }
 
