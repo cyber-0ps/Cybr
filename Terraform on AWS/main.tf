@@ -22,8 +22,18 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "kuljot-biring-test-bucket"
+  bucket = "kuljot-biring-test-useast1"
   provider = aws.ue1
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket" "example2" {
+  bucket = "kuljot-biring-test-bucket-euwest1"
+  provider = aws.ew1
 
   tags = {
     Name        = "My bucket"
