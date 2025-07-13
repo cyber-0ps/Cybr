@@ -1,8 +1,5 @@
 resource "aws_s3_bucket" "example" {
-  bucket = "kuljot-biring-test"
+  bucket = var.aws_s3_bucket_name
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+  tags = var.aws_tagging
 }

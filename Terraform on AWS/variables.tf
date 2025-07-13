@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "aws_s3_bucket_name" {
   description = "The unique name of the AWS bucket."
   type = "string"
-  default = "cybr-christophe"
+  default = "kuljot-biring-test"
 }
 
 variable "aws_tagging" {
