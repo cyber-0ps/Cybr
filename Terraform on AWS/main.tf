@@ -10,30 +10,11 @@ terraform {
 provider "aws" {
   # Configuration options
   region = "us-east-1"
-  alias = "ue1"
-  profile = "cybr"
-}
-
-provider "aws" {
-  # Configuration options
-  region = "eu-west-1"
-  alias = "ew1"
   profile = "cybr"
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "kuljot-biring-test-useast1"
-  provider = aws.ue1
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
-
-resource "aws_s3_bucket" "example2" {
-  bucket = "kuljot-biring-test-bucket-euwest1"
-  provider = aws.ew1
+  bucket = "kuljot-biring-test"
 
   tags = {
     Name        = "My bucket"
