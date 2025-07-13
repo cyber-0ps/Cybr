@@ -1,13 +1,13 @@
 variable "aws_region" {
   description = "The aws region to deploy in."
-  type = "string"
-  default = "us-east-1"
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "aws_s3_bucket_name" {
   description = "The unique name of the AWS bucket."
-  type = "string"
-  default = "kuljot-biring-test"
+  type        = string
+  default     = "kuljot-biring-test"
 }
 
 variable "aws_tagging" {
