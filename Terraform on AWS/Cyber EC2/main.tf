@@ -59,3 +59,13 @@ data "aws_ami" "amazon_linux" {
     values = ["al2023-ami-2023.*-x86_64"]
   }
 }
+
+# creates an ec2 instance (virtual machine) with the latest amazon linux ami
+resource "aws_instance" "ec2_host" {
+  ami                    = data.aws_ami.amazon_linux.id
+  instance_type          = "t3.micro"
+  subnet_id              = aws_subnet.main.id
+  vpc_security_group_ids = [aws_security_group.example.id]
+
+  tags = var.aws_tagging
+}
