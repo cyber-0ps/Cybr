@@ -4,3 +4,12 @@ resource "aws_vpc" "custom_vpc" {
 
   tags = var.aws_tagging
 }
+
+// Get available AZs
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+locals {
+  filtered_azs = [for az in data.aws_availability_zones.available.names : az if contains(var.desired_azs, az)]
+}
