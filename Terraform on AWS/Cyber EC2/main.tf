@@ -49,3 +49,13 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound" {
   cidr_ipv4   = "0.0.0.0/0"
   ip_protocol = "-1"
 }
+
+# grabs the latest amazon linux ami, this is the operating system that will be installed on the ec2 instance
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"]
+  }
+}
