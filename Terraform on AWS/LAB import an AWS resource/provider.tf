@@ -9,5 +9,6 @@ terraform {
 
 provider "aws" {
   # Configuration options
-  var.aws_region
+  region = var.aws_region
+  profile = "cybr"
 }
