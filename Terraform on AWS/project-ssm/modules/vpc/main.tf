@@ -15,3 +15,11 @@ resource "aws_vpc" "vpc" {
   enable_dns_support = var.vpc_config.enable_dns_support
   tags = var.vpc_config.tags
 }
+
+# create an Internet Gateway for our VPC
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    "Name" = "tf_igw"
+  }
+}
