@@ -23,3 +23,14 @@ resource "aws_internet_gateway" "igw" {
     "Name" = "tf_igw"
   }
 }
+
+# Create public subnets
+resource "aws_subnet" "public" {
+  count = local.num_of_public_subnets
+  vpc_id = aws_vpc.vpc.id
+  availability_zone = var.vpc_config.availability_zones[count.index]
+  cidr_block = cidrsubnet(aws_vpc.vpc.cidr_block, 2, count.index +1) #function that automatically creates subnet CIDR blocks based n the VPC CIDR block
+  tags = {
+    "Name" = "tf_public_subnet_${count.index +1}"
+  }  
+}
