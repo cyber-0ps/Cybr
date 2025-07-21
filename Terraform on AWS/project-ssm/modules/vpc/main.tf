@@ -62,3 +62,12 @@ resource "aws_subnet" "private " {
   }  
 }
 
+# Create route tables for each private subnet
+resource "aws_route_table" "private" {
+    count = local.num_of_private_subnets
+    vpc_id = aws_vpc.vpc.id
+  route = {
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.ngw[count.index].id
+  }
+}
