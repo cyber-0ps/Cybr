@@ -50,3 +50,15 @@ resource "aws_route_table_association" "public" {
   subnet_id = aws_subnet.public[count.index].id # gets each public subnet ID
   route_table_id = aws_route_table.public.id
 }
+
+# Private subnets and associated route tables
+resource "aws_subnet" "private " {
+  count = local.num_of_private_subnets
+  vpc_id = aws_vpc.vpc.id
+  availability_zone = var.vpc_config.availability_zones[count.index]
+  cidr_block = cidrsubnet(aws_vpc.vpc.cidr_block, 4, count.index +1) #function that automatically creates subnet CIDR blocks based n the VPC CIDR block
+  tags = {
+    "Name" = "tf_private_subnet_${count.index +1}"
+  }  
+}
+
