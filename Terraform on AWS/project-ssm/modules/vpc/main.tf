@@ -87,3 +87,15 @@ resource "aws_eip" "ngw" {
     "Name" = "tf_nat_gateway_${count.index + 1}"
   }
 }
+
+# Create a NAT Gateway for each public subnet
+resource "aws_nat_gateway" "ngw" {
+  count = local.num_of_public_subnets
+  allocation_id = element(aws_eip.ngw[*].id, count.index) # assign an elastic IP to each of the NAT Gateways
+  subnet_id = element(aws_subnet.public[*], count.index) # assign each NAT Gateway to a public subnet
+  depends_on = [ aws_internet_gateway.igw ] # Nat Gateway depends on Internet Gateway
+
+  tags = {
+    "Name" = "tf_nat_gateway_${count.index + 1}"
+  }
+}
