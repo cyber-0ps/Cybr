@@ -71,3 +71,19 @@ resource "aws_route_table" "private" {
     nat_gateway_id = aws_nat_gateway.ngw[count.index].id
   }
 }
+
+# Assocaite the route table with the private subnets
+resource "aws_route_table_association" "private" {
+  count = local.num_of_private_subnets 
+  subnet_id = aws_subnet.private[count.index].id # gets each private subnet ID
+  route_table_id = element(aws_route_table.private[*].id, count.index) # assocaite the privatesubnets with each private route tables
+}
+
+# Create and Elastic IP for each NAT Gateway
+resource "aws_eip" "ngw" {
+  count = local.num_of_public_subnets # number of NAT Gateways
+
+  tags = {
+    "Name" = "tf_nat_gateway_${count.index + 1}"
+  }
+}
