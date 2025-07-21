@@ -44,3 +44,9 @@ resource "aws_route_table" "public" {
   }
 }
 
+# Assocaite the route table with the public subnets
+resource "aws_route_table_association" "public" {
+  count = local.num_of_public_subnets 
+  subnet_id = aws_subnet.public[count.index].id # gets each public subnet ID
+  route_table_id = aws_route_table.public.id
+}
