@@ -37,3 +37,10 @@ resource "aws_vpc_endpoint" "vpc_endpoints" {
   }
 }
 
+# Create VPC endpoint SG and associated rules
+resource "aws_security_group" "vpce_security_groups" {
+  vpc_id = module.networking.vpc_resources.id
+  name = "VPC Endpoiits for SSM"
+  description = "Allos inbound HTTPS traffic to the VPC Endpoints"
+}
+
