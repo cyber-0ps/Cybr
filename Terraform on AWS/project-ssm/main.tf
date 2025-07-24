@@ -44,3 +44,12 @@ resource "aws_security_group" "vpce_security_groups" {
   description = "Allos inbound HTTPS traffic to the VPC Endpoints"
 }
 
+resource "aws_security_group_rule" "vpce_ingress_itself" {
+  type = "ingress"
+  description = "Allows HTTPS traffic from itself"
+  from_port = 443
+  to_port = 443
+  protocol = "tcp"
+  security_group_id = aws_security_group.vpce_security_groups.id # the security groups to attach
+  source_security_group_id = aws_security_group.vpce_security_groups.id # originating traffice form the same security group
+}
