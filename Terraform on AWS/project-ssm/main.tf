@@ -53,3 +53,18 @@ resource "aws_security_group_rule" "vpce_ingress_itself" {
   security_group_id = aws_security_group.vpce_security_groups.id # the security groups to attach
   source_security_group_id = aws_security_group.vpce_security_groups.id # originating traffice form the same security group
 }
+
+# Create EC2s
+module "ec2_public1" {
+  source = "./modules/ec2"
+
+  ec2_config = {
+    instance_type = "t2.micro"
+    subnet_id = module.networking.vpc_resources.public_subnet_ids[0]
+    public_ip = true
+
+    tags = {
+      "Namee" = "tf_ec2_public"
+    }
+  }
+}
