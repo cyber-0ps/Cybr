@@ -64,7 +64,20 @@ module "ec2_public1" {
     public_ip = true
 
     tags = {
-      "Namee" = "tf_ec2_public"
+      "Namee" = "tf_ec2_public1"
+    }
+  }
+}
+
+module "ec2_private1" {
+  source = "./modules/ec2"
+
+  ec2_config = {
+    instance_type = "t2.micro"
+    subnet_id = module.networking.vpc_resources.private_subnet_ids[0]
+
+    tags = {
+      "Namee" = "tf_ec2_private1"
     }
   }
 }
