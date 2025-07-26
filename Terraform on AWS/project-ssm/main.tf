@@ -88,3 +88,13 @@ resource "aws_security_group" "ssm_ec2" {
   name = "Allow SSM for EC2"
   description = "Allows EC2 HTTP traffic to the SSM VPC Endpoints"
 }
+
+resource "aws_security_group_rule" "ssm_ec2" {
+  type = "egress"
+  description = "Allows EC2 HTTP traffic to the SSM VPC endpoint SG"
+  from_port = 443
+  to_port = 443
+  protocol = "tcp"
+  security_group_id = aws_security_group.ssm_ec2.id
+  source_security_group_id = aws_security_group.vpce_security_groups.id
+}
