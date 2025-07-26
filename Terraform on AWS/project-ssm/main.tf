@@ -76,6 +76,7 @@ module "ec2_private1" {
   ec2_config = {
     instance_type = "t2.micro"
     subnet_id = module.networking.vpc_resources.private_subnet_ids[0]
+    security_groups = [aws_security_group.ssm_ec2.id]
 
     tags = {
       "Namee" = "tf_ec2_private1"
