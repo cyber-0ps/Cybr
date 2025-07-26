@@ -81,3 +81,10 @@ module "ec2_private1" {
     }
   }
 }
+
+# Create EC2 security group and associated rules
+resource "aws_security_group" "ssm_ec2" {
+  vpc_id = module.networking.vpc_resources.vpc_id
+  name = "Allow SSM for EC2"
+  description = "Allows EC2 HTTP traffic to the SSM VPC Endpoints"
+}
