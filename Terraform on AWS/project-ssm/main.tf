@@ -54,6 +54,16 @@ resource "aws_security_group_rule" "vpce_ingress_itself" {
   source_security_group_id = aws_security_group.vpce_security_groups.id # originating traffice form the same security group
 }
 
+resource "aws_security_group_rule" "vpc_ingress_ec2" {
+  type = "ingress"
+  description = "Allows HTTPS traffic from EC2 instances"
+  from_port = 443
+  to_port = 443
+  protocol = "tcp"
+  security_group_id = aws_security_group.vpce_security_groups.id
+  source_security_group_id = aws_security_group.ssm_ec2.id
+}
+
 # Create EC2s
 module "ec2_public1" {
   source = "./modules/ec2"
