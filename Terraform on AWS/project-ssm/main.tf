@@ -62,6 +62,7 @@ module "ec2_public1" {
     instance_type = "t2.micro"
     subnet_id = module.networking.vpc_resources.public_subnet_ids[0]
     public_ip = true
+    security_groups = [aws_security_group.ssm_ec2.id]
 
     tags = {
       "Namee" = "tf_ec2_public1"
