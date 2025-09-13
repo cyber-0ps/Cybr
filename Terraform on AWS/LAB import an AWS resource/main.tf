@@ -4,6 +4,6 @@ import {
 }
 
 resource "aws_s3_bucket" "bucket_to_import" {
-    bucket = "demo-import-bucket"
-    force_destroy = true
+  bucket        = "demo-import-bucket"
+  force_destroy = true
 }
