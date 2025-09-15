@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "6.3.0"
     }
   }
@@ -9,6 +9,6 @@ terraform {
 
 provider "aws" {
   # Configuration options
-  region = var.aws_region
+  region  = var.aws_region
   profile = "cybr"
 }
