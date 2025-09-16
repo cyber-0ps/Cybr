@@ -1,10 +1,10 @@
 variable "vpc_config" {
   type = object({
-    cidr_block = string
+    cidr_block           = string
     enable_dns_hostnames = optional(bool, true)
-    enable_dns_support = optional(bool, true)
-    availabilty_zones = list(string)
-    tags = map(string)
+    enable_dns_support   = optional(bool, true)
+    availabilty_zones    = list(string)
+    tags                 = map(string)
   })
   description = <<EOT
   Configuration options for the VPC:
